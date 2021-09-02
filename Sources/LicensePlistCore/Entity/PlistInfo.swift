@@ -55,6 +55,12 @@ struct PlistInfo {
         Log.info("Manual License start")
         manualLicenses = ManualLicense.load(options.config.manuals).sorted()
     }
+    
+    var allLicensesString: [String] {
+        (cocoaPodsLicenses ?? []).map { String(describing: $0) } +
+        (githubLicenses ?? []).map { String(describing: $0) } +
+        (manualLicenses ?? []).map { String(describing: $0) }
+    }
 
     mutating func compareWithLatestSummary() {
         guard let cocoaPodsLicenses = cocoaPodsLicenses,
@@ -157,7 +163,9 @@ struct PlistInfo {
             fatalError("summary should be set")
         }
         do {
+            try allLicensesString.joined(separator: "\n").write(to: options.outputPath.appendingPathComponent("\(options.prefix).latest_result_foo.txt"), atomically: true, encoding: Consts.encoding)
             try summary.write(to: summaryPath, atomically: true, encoding: Consts.encoding)
+            
         } catch let e {
             Log.error("Failed to save summary. Error: \(String(describing: e))")
         }

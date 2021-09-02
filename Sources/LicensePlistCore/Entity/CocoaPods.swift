@@ -6,6 +6,7 @@ public struct CocoaPods: Library {
     public let name: String
     public let nameSpecified: String?
     public let version: String?
+    public var spdxID: String?
 }
 
 extension CocoaPods {

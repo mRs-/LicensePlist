@@ -42,7 +42,8 @@ public struct Config {
             return GitHub(name: name,
                           nameSpecified: renames[name],
                           owner: owner,
-                          version: dictionary["version"]?.string)
+                          version: dictionary["version"]?.string,
+                          spdxID: dictionary["spdxid"]?.string)
             }.compactMap { $0 } ?? []
         self = Config(githubs: githubsVersion + gitHubList, manuals: manualList, excludes: excludes, renames: renames)
     }

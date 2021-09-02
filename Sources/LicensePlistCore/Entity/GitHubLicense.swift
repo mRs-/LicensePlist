@@ -4,11 +4,27 @@ import APIKit
 public struct GitHubLicense: License, Equatable {
     public let library: GitHub
     public let body: String
+    public var spdxId: String?
+    public var url: String { "https://www.github.com/\(library.owner)/\(library.name)"}
     let githubResponse: LicenseResponse
 
     public static func==(lhs: GitHubLicense, rhs: GitHubLicense) -> Bool {
         return lhs.library == rhs.library &&
             lhs.body == rhs.body
+    }
+}
+
+extension GitHubLicense: CustomStringConvertible {
+    public var description: String {
+        return """
+        {
+            "Author": "\(library.owner)",
+            "License": "\(spdxId ?? "")",
+            "Name": "\(library.name)",
+            "URL: "\(url)",
+            "Version: "\(library.version ?? "")",
+        },
+        """
     }
 }
 
@@ -56,6 +72,7 @@ extension GitHubLicense {
             case .success(let response):
                 let license = GitHubLicense(library: library,
                                             body: response.contentDecoded,
+                                            spdxId: response.kind.spdxId,
                                             githubResponse: response)
                 return Result.success(license)
             }

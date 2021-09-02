@@ -36,10 +36,12 @@ struct LicenseResponse: Decodable {
         case content = "content"
         case encoding = "encoding"
         case kind = "license"
+        case url = "url"
     }
 
     let content: String
     let encoding: String
+    let url: String
     let kind: LicenseKindResponse
 
     var contentDecoded: String {

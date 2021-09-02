@@ -7,6 +7,7 @@ public struct GitHub: Library {
     public let nameSpecified: String?
     var owner: String
     public let version: String?
+    public var spdxID: String?
 }
 
 extension GitHub {

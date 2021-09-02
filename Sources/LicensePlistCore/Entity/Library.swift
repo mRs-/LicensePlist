@@ -4,6 +4,7 @@ import LoggerAPI
 
 public protocol Library: HasName, Hashable {
     var version: String? { get }
+    var spdxID: String? { get }
 }
 
 extension Library {

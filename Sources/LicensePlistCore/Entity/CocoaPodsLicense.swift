@@ -4,6 +4,7 @@ import LoggerAPI
 public struct CocoaPodsLicense: License, Equatable {
     public let library: CocoaPods
     public let body: String
+    public var spdxId: String?
 
     public static func==(lhs: CocoaPodsLicense, rhs: CocoaPodsLicense) -> Bool {
         return lhs.library == rhs.library &&

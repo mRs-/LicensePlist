@@ -6,6 +6,7 @@ public protocol LicenseInfo: HasName {
     var body: String { get }
     var version: String? { get }
     var bodyEscaped: String { get }
+    var spdxId: String? { get }
 }
 
 public protocol License: LicenseInfo {

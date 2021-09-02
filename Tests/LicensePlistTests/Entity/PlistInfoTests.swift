@@ -111,6 +111,7 @@ class PlistInfoTests: XCTestCase {
                                           body: "body",
                                           githubResponse: LicenseResponse(content: "",
                                                                           encoding: "",
+                                                                          url: "",
                                                                           kind: LicenseKindResponse(name: "name",
                                                                                                     spdxId: nil)))
         target.cocoaPodsLicenses = []
@@ -135,9 +136,10 @@ class PlistInfoTests: XCTestCase {
         let githubLicense = GitHubLicense(library: github,
                                           body: "body",
                                           githubResponse: LicenseResponse(content: "",
-                                                                          encoding: "",
-                                                                          kind: LicenseKindResponse(name: "name",
-                                                                                                    spdxId: nil)))
+                                                                                   encoding: "",
+                                                                                   url: "",
+                                                                                   kind: LicenseKindResponse(name: "name",
+                                                                                                             spdxId: nil)))
         target.licenses = [githubLicense]
         target.outputPlist()
     }
@@ -148,9 +150,10 @@ class PlistInfoTests: XCTestCase {
         let githubLicense = GitHubLicense(library: github,
                                           body: "body",
                                           githubResponse: LicenseResponse(content: "",
-                                                                          encoding: "",
-                                                                          kind: LicenseKindResponse(name: "name",
-                                                                                                    spdxId: nil)))
+                                                                                   encoding: "",
+                                                                                   url: "",
+                                                                                   kind: LicenseKindResponse(name: "name",
+                                                                                                             spdxId: nil)))
         target.githubLibraries = [github]
         target.licenses = [githubLicense]
         target.reportMissings()
@@ -163,6 +166,7 @@ class PlistInfoTests: XCTestCase {
                                           body: "body",
                                           githubResponse: LicenseResponse(content: "",
                                                                           encoding: "",
+                                                                          url: "",
                                                                           kind: LicenseKindResponse(name: "name",
                                                                                                     spdxId: nil)))
         target.githubLibraries = [github]

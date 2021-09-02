@@ -9,6 +9,7 @@ public class Manual: Library {
     public var source: String?
     public var nameSpecified: String?
     public var version: String?
+    public var spdxID: String?
 
     public init(name n: String, source: String?, nameSpecified: String?, version: String?) {
         self.name = n

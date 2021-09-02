@@ -2,8 +2,10 @@ import Foundation
 import LoggerAPI
 
 public struct ManualLicense: License, Equatable {
+   
     public let library: Manual
     public let body: String
+    public var spdxId: String?
 
     public static func==(lhs: ManualLicense, rhs: ManualLicense) -> Bool {
         return lhs.library == rhs.library &&
